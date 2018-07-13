@@ -57,4 +57,21 @@ public class Book {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Book [id=");
+		builder.append(id);
+		builder.append(", title=");
+		builder.append(title);
+		builder.append(", isbn=");
+		builder.append(isbn);
+		builder.append(", publisher=");
+		builder.append(publisher);
+		builder.append(", authors=");
+		builder.append(authors);
+		builder.append("]");
+		return builder.toString();
+	}
 }
