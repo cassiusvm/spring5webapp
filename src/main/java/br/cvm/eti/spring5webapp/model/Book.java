@@ -11,16 +11,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,6 +30,20 @@ public class Book {
 	@ManyToMany
 	@JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
 	private Set<Author> authors = new HashSet<>();
+	
+	public Book(String title, String isbn, String publisher) {
+		this.title = title;
+		this.isbn = isbn;
+		this.publisher = publisher;
+	}
+	
+	public Book(String title, String isbn, String publisher, Set<Author> authors) {
+		super();
+		this.title = title;
+		this.isbn = isbn;
+		this.publisher = publisher;
+		this.authors = authors;
+	}
 
 	@Override
 	public int hashCode() {

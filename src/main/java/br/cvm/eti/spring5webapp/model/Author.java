@@ -9,16 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-@RequiredArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor
 public class Author {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,6 +26,18 @@ public class Author {
 
 	@ManyToMany(mappedBy = "authors")
 	private Set<Book> books = new HashSet<>();
+
+	public Author(String firstName, String lastName) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+	
+	public Author(String firstName, String lastName, Set<Book> books) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.books = books;
+	}
 
 	@Override
 	public int hashCode() {
