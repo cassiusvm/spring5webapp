@@ -15,7 +15,7 @@ public class AuthorController {
 	}
 	
 	@GetMapping("/authors")
-	public String authors(Model model) {
+	public String getAuthors(Model model) {
 		model.addAttribute("authors", authorRepository.findAll());
 		
 		return "authors";
