@@ -10,10 +10,12 @@
 	<table>
 		<tr>
 			<th>ID</th>
+			<th>ISBN</th>
 			<th>Title</th>
 			<th>Publisher</th>
 		</tr>
 		<tr th:each="book : ${books}">
+			<td th:text="${book.id}">123</td>
 			<td th:text="${book.isbn}">9781617294945</td>
 			<td th:text="${book.title}">Spring in Action, Fifth Edition</td>
 			<td th:text="${book.publisher.name}">Manning Publications</td>
