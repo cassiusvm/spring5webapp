@@ -1,4 +1,4 @@
-package br.cvm.eti.spring5webapp.model;
+package br.eti.cvm.spring5webapp.model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -7,7 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,26 +20,32 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Author {
+public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String firstName;
-	private String lastName;
+	private String title;
+	private String isbn;
+	
+	@OneToOne
+	private Publisher publisher;
 
-	@ManyToMany(mappedBy = "authors")
-	private Set<Book> books = new HashSet<>();
-
-	public Author(String firstName, String lastName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
+	@ManyToMany
+	@JoinTable(name = "author_book", joinColumns = @JoinColumn(name = "book_id"), inverseJoinColumns = @JoinColumn(name = "author_id"))
+	private Set<Author> authors = new HashSet<>();
+	
+	public Book(String title, String isbn, Publisher publisher) {
+		this.title = title;
+		this.isbn = isbn;
+		this.publisher = publisher;
 	}
 	
-	public Author(String firstName, String lastName, Set<Book> books) {
+	public Book(String title, String isbn, Publisher publisher, Set<Author> authors) {
 		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.books = books;
+		this.title = title;
+		this.isbn = isbn;
+		this.publisher = publisher;
+		this.authors = authors;
 	}
 
 	@Override
@@ -55,7 +64,7 @@ public class Author {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Author other = (Author) obj;
+		Book other = (Book) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -67,14 +76,16 @@ public class Author {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Author [id=");
+		builder.append("Book [id=");
 		builder.append(id);
-		builder.append(", firstName=");
-		builder.append(firstName);
-		builder.append(", lastName=");
-		builder.append(lastName);
-		builder.append(", books=");
-		builder.append(books);
+		builder.append(", title=");
+		builder.append(title);
+		builder.append(", isbn=");
+		builder.append(isbn);
+		builder.append(", publisher=");
+		builder.append(publisher);
+		builder.append(", authors=");
+		builder.append(authors);
 		builder.append("]");
 		return builder.toString();
 	}

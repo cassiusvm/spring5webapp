@@ -1,15 +1,15 @@
-package br.cvm.eti.spring5webapp.bootstrap;
+package br.eti.cvm.spring5webapp.bootstrap;
 
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 
-import br.cvm.eti.spring5webapp.model.Author;
-import br.cvm.eti.spring5webapp.model.Book;
-import br.cvm.eti.spring5webapp.model.Publisher;
-import br.cvm.eti.spring5webapp.repositories.AuthorRepository;
-import br.cvm.eti.spring5webapp.repositories.BookRepository;
-import br.cvm.eti.spring5webapp.repositories.PublisherRepository;
+import br.eti.cvm.spring5webapp.model.Author;
+import br.eti.cvm.spring5webapp.model.Book;
+import br.eti.cvm.spring5webapp.model.Publisher;
+import br.eti.cvm.spring5webapp.repositories.AuthorRepository;
+import br.eti.cvm.spring5webapp.repositories.BookRepository;
+import br.eti.cvm.spring5webapp.repositories.PublisherRepository;
 
 @Component
 public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent> {

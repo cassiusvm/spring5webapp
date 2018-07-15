@@ -1,8 +1,8 @@
-package br.cvm.eti.spring5webapp.repositories;
+package br.eti.cvm.spring5webapp.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import br.cvm.eti.spring5webapp.model.Author;
+import br.eti.cvm.spring5webapp.model.Author;
 
 public interface AuthorRepository extends CrudRepository<Author, Long> {
 }

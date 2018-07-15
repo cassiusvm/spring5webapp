@@ -1,4 +1,4 @@
-package br.cvm.eti.spring5webapp;
+package br.eti.cvm.spring5webapp;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

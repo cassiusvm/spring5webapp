@@ -1,4 +1,4 @@
-package br.cvm.eti.spring5webapp.model;
+package br.eti.cvm.spring5webapp.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

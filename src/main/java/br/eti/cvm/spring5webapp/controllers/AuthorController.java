@@ -1,10 +1,10 @@
-package br.cvm.eti.spring5webapp.controllers;
+package br.eti.cvm.spring5webapp.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import br.cvm.eti.spring5webapp.repositories.AuthorRepository;
+import br.eti.cvm.spring5webapp.repositories.AuthorRepository;
 
 @Controller
 public class AuthorController {
